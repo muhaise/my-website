@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Me</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0fff0;
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+
+    input, textarea {
+      width: 300px;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      color: #0077cc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Contact Me</h1>
+  <p>Have questions or want to say hi? Use the form below!</p>
+
+  <form action="https://formspree.io/f/xvgknjrp" method="POST">
+    <!-- Hidden fields -->
+    <input type="hidden" name="_replyto">
+    <input type="hidden" name="_redirect" value="thankyou.html">
+  
+    <!-- Name (min 3 characters) -->
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      required
+      minlength="3"
+      title="Please enter at least 3 characters"
+    ><br>
+  
+    <!-- Email (must be valid format) -->
+    <input
+      type="email"
+      name="email"
+      placeholder="Your Email"
+      required
+      title="Please enter a valid email address"
+    ><br>
+  
+    <!-- Message (min 10 characters) -->
+    <textarea
+      name="message"
+      placeholder="Your Message"
+      rows="4"
+      required
+      minlength="10"
+      title="Message should be at least 10 characters"
+    ></textarea><br>
+  
+    <!-- Submit -->
+    <button type="submit">Send Message</button>
+  </form>
+  
+  <a href="index.html">← Back to Home</a>
+
+</body>
+</html>
