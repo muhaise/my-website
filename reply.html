@@ -1,29 +1,31 @@
-<h2>Reply to Our Feedback</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reply to Feedback</title>
+  <meta charset="UTF-8">
+</head>
+<body>
 
-<form action="https://formspree.io/f/https://formspree.io/f/xjkrryjl" method="POST">
-  <label>
-    Your Name:<br>
-    <input type="text" name="name" required>
-  </label>
-  <br><br>
+  <h2>Reply to Feedback</h2>
 
-  <label>
-    Your Email:<br>
-    <input type="email" name="email" required>
-  </label>
-  <br><br>
+  <form action="https://formspree.io/f/your-reply-code" method="POST">
+    <label for="email">To Email:</label><br>
+    <input type="email" name="email" id="email" required><br><br>
 
-  <label>
-    Your Reply Message:<br>
-    <textarea name="message" rows="6" required></textarea>
-  </label>
-  <br><br>
+    <label for="message">Your Reply:</label><br>
+    <textarea name="message" id="message" rows="5" required></textarea><br><br>
 
-  <input type="hidden" name="_redirect" value="thankyou.html">
-<input type="hidden" name="to_email" value="muhaisejoseph66@gmail.com">
-  <a href="reply.html?email=user@example.com">Reply</a>
+    <button type="submit">Send Reply</button>
+  </form>
 
+  <!-- Autofill email from URL -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get('email');
+    if (email) {
+      document.getElementById('email').value = email;
+    }
+  </script>
 
-
-  <button type="submit">Send Reply</button>
-</form>
+</body>
+</html>
