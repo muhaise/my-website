@@ -1,109 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Muhaise's personal website and portfolio.">
-<meta name="keywords" content="Muhaise, portfolio, web developer, contact, projects">
-<meta name="author" content="Muhaise">
-
-  <title>My Personal Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Muhaise Joseph | Personal Website</title>
+  <meta name="description" content="Welcome to Muhaise Joseph's official personal website. Learn about me, my projects, blogs, and get in touch." />
   <style>
+    /* Reset & basics */
+    * {
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
     body {
-      font-family: Arial, sans-serif;
-      background-color: #fafafa;
-      color: #333;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px;
-      text-align: center;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #eee;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      line-height: 1.6;
     }
-
-    img {
-      width: 150px;
-      border-radius: 50%;
-      margin-top: 20px;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    li {
-      margin: 5px 0;
-    }
-
     a {
-      color: #0077cc;
+      color: #1e90ff;
       text-decoration: none;
     }
+    a:hover {
+      text-decoration: underline;
+    }
+    h1, h2, h3 {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    nav {
+      background-color: #1f1f1f;
+      padding: 15px;
+      text-align: center;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(30, 144, 255, 0.3);
+    }
+    nav a {
+      margin: 0 15px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #1e90ff;
+    }
+    nav a.active {
+      border-bottom: 2px solid #1e90ff;
+      padding-bottom: 4px;
+    }
+
+    img.avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 20px auto;
+      box-shadow: 0 0 12px #1e90ff;
+    }
+
+    section {
+      margin-bottom: 60px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #1f1f1f;
+      box-shadow: 0 0 10px rgba(255 255 255 / 0.05);
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 20px;
+    }
+    .project {
+      background-color: #2c2c2c;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #1e90ff33;
+      transition: transform 0.3s ease;
+    }
+    .project:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #1e90ffaa;
+    }
+    .project h3 {
+      margin-top: 0;
+      color: #1e90ff;
+    }
+    .project p {
+      color: #ccc;
+    }
+
+    /* Blog posts list */
+    .blogs-list {
+      list-style: none;
+      padding: 0;
+    }
+    .blogs-list li {
+      background-color: #2c2c2c;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #1e90ff33;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .blogs-list li:hover {
+      background-color: #3d3d3d;
+    }
+    .blogs-list li h4 {
+      margin: 0 0 6px 0;
+      color: #1e90ff;
+    }
+    .blogs-list li p {
+      margin: 0;
+      color: #ccc;
+    }
+
+    /* Contact form */
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #ccc;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #555;
+      background-color: #222;
+      color: #eee;
+      font-size: 1rem;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #1e90ff;
+      background-color: #1a1a1a;
+    }
+    button {
+      background-color: #1e90ff;
+      color: white;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0f61b0;
+    }
+    .contact-social {
+      margin-top: 20px;
+      text-align: center;
+      color: #ccc;
+    }
+    .contact-social a {
+      margin: 0 15px;
+      font-weight: 600;
+      color: #1e90ff;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: #555;
+      padding: 30px 0;
+      font-size: 0.9rem;
+      border-top: 1px solid #333;
+      margin-top: 50px;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
-<!-- SEO -->
-<title>Muhaise | Personal Website</title>
-<meta name="description" content="Welcome to Muhaise's official personal website. Learn more about me, view my work, and get in touch.">
-<meta name="keywords" content="Muhaise, portfolio, personal website, developer, Uganda">
-<meta name="author" content="Muhaise">
-<!-- Open Graph (Facebook, LinkedIn, etc.) -->
-<meta property="og:title" content="Muhaise | Personal Website">
-<meta property="og:description" content="Welcome to Muhaise's official personal website.">
-<meta property="og:image" content="https://muhaise.github.io/images/gallery4.jpg">
-<meta property="og:url" content="https://muhaise.github.io">
-<meta property="og:type" content="website">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Muhaise | Personal Website">
-<meta name="twitter:description" content="Come see what Muhaise is building.">
-<meta name="twitter:image" content="https://muhaise.github.io/images/preview.png">
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-
 </head>
 <body>
-  <nav style="background-color: #0077cc; padding: 15px; text-align: center;">
-    <a href="#about" style="color: white; margin: 0 15px; text-decoration: none;">About</a>
-    <a href="#gallery" style="color: white; margin: 0 15px; text-decoration: none;">Gallery</a>
-    <a href="contact.html" style="color: white; margin: 0 15px; text-decoration: none;">Contact</a>
+
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
   </nav>
-  
-  <h1>Hello, I’m MUHAISE JOSEPH</h1>
-  <p>Welcome to MJ Share Mind Welcome to the space where creativity meets innovation.</p>
 
-  <!-- Optional photo -->
-  <img src="gallery1.jpg" alt="My photo">
+  <section id="home" class="visible">
+    <img src="gallery1.jpg" alt="Muhaise Joseph" class="avatar" />
+    <h1>Hello, I’m Muhaise Joseph</h1>
+    <p>Welcome to my personal website — a space where creativity meets innovation and learning never stops.</p>
+    <p>I’m a beginner web developer passionate about building beautiful, functional websites and sharing ideas with the world.</p>
 
-  </ul>
-  <p><a href="about.html">Learn more about me →</a></p>
-  <p><a href="contact.html">Contact me →</a></p>
-
-  <h2>Links</h2>
-  <p>
-    <a href="https://www.freecodecamp.org" target="_blank">My favorite coding site</a>
-  </p>
-  <section id="about" style="background-color: #f9f9f9; padding: 60px 20px; text-align: center;">
     <h2>About Me</h2>
-
-    <img src="gallery2.jpg" alt="Your Photo" style="width: 150px; border-radius: 50%; margin-top: 20px;">
-    <p style="max-width: 600px; margin: 20px auto; font-size: 1.1rem;">
-      Hi! I'm Muhaise joseph , a beginner web developer learning HTML and CSS to build beautiful websites.
-      I'm passionate about turning ideas into real projects and improving one line of code at a time.
-    </p>
-    <p>I enjoy learning new things, exploring tech, and creating cool projects.</p>
-
-    <h2>My Hobbies</h2>
-    <ul>
-      <li>Football</li>
-      <li>volleyball</li>
-      <li>basketball</li>
-      <li>coding</li>
+    <p>I love football, volleyball, basketball, and coding.</p>
   </section>
-  <section id="gallery" style="padding: 60px 20px; text-align: center;">
-    <h2>Photo Gallery</h2>
- <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; max-width: 800px; margin: 40px auto;">
-      <img src="gallery5.JPG" alt="Gallery Image 2" style="width: 100%; border-radius: 12px;">
-      <img src="gallery4.jpg" alt="Gallery Image 4" style="width: 100%; border-radius: 12px;">
-      <img src="galley6.jpg" alt="Gallery Image 5" style="width: 100%; border-radius: 12px;">
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project">
+        <h3>JOSEKA Fuel Management System</h3>
+        <p>A web app to manage fuel station records with meter readings and calculations.</p>
+        <a href="https://github.com/muhaise/joseka-fuel" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+      <div class="project">
+        <h3>Personal Portfolio</h3>
+        <p>A responsive portfolio website showcasing my skills and projects.</p>
+        <a href="https://muhaise.github.io" target="_blank" rel="noopener noreferrer">View Live</a>
+      </div>
+      <div class="project">
+        <h3>Blog Platform</h3>
+        <p>A simple blog platform built with HTML and CSS for sharing posts.</p>
+        <a href="blog.html" target="_blank" rel="noopener noreferrer">Read the Blog</a>
+      </div>
     </div>
+  </section>
 
+  <section id="blog">
+    <h2>Latest Blog Posts</h2>
+    <ul class="blogs-list">
+      <li tabindex="0">
+        <h4>Getting Started with HTML</h4>
+        <p>A beginner’s guide to the basics of HTML structure and tags.</p>
+      </li>
+      <li tabindex="0">
+        <h4>Understanding CSS Grid</h4>
+        <p>How to create responsive layouts easily using CSS Grid.</p>
+      </li>
+      <li tabindex="0">
+        <h4>Dark Mode for Your Website</h4>
+        <p>Step-by-step tutorial to add a dark mode toggle to your site.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Have questions or want to say hi? Use the form below!</p>
+    <form action="https://formspree.io/f/xvgknjrp" method="POST">
+      <input type="hidden" name="_redirect" value="thankyou.html" />
+      
+      <label for="name">Your Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Your Name"
+        required
+        minlength="3"
+        title="Please enter at least 3 characters"
+      />
+
+      <label for="email">Your Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Your Email"
+        required
+        title="Please enter a valid email address"
+      />
+
+      <label for="message">Your Message</label>
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Your Message"
+        rows="5"
+        required
+        minlength="10"
+        title="Message should be at least 10 characters"
+      ></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+    <div class="contact-social">
+      <p>Connect with me:</p>
+      <a href="https://facebook.com/Rexmuhaisejosephbojo" target="_blank" rel="noopener noreferrer">Facebook</a> |
+      <a href="https://instagram.com/SirChiefMJ" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Muhaise Joseph. All rights reserved.
+  </footer>
+
+  <script>
+    // Smooth scroll for nav links
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Fade in sections on scroll
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      const windowBottom = window.innerHeight + window.scrollY;
+      sections.forEach(section => {
+        if (windowBottom > section.offsetTop + 100) {
+          section.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
 </body>
-
 </html>
