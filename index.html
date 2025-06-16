@@ -1,342 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Muhaise | Personal Website</title>
-  <meta name="description" content="Welcome to Muhaise's official personal website. Learn more about me, view my work, and get in touch." />
-  <meta name="keywords" content="Muhaise, portfolio, personal website, developer, Uganda" />
-  <meta name="author" content="Muhaise" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Muhaise Joseph | Personal Website</title>
+<meta name="description" content="Muhaise Joseph's personal portfolio with projects, blog, contact, and gallery." />
+<meta name="keywords" content="Muhaise Joseph, portfolio, web developer, blog, projects, Uganda" />
+<meta name="author" content="Muhaise Joseph" />
 
-  <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<!-- Open Graph -->
+<meta property="og:title" content="Muhaise Joseph | Personal Website" />
+<meta property="og:description" content="Portfolio of Muhaise Joseph" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="gallery1.jpg" />
+<meta property="og:url" content="https://yourusername.github.io/" />
 
-    /* Dark mode base */
-    body {
-      background-color: #121212;
-      color: #e0e0e0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      scroll-behavior: smooth;
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Muhaise Joseph | Personal Website" />
+<meta name="twitter:description" content="Portfolio of Muhaise Joseph" />
+<meta name="twitter:image" content="gallery1.jpg" />
 
-    a {
-      color: #1e90ff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: #63b3ed;
-    }
+<style>
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+    transition: background-color 0.4s, color 0.4s;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fafafa;
+    color: #222;
+    line-height: 1.6;
+  }
+  a {
+    color: #0077cc;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  a:hover {
+    color: #004a80;
+  }
 
+  /* Dark mode */
+  body.dark {
+    background-color: #121212;
+    color: #eee;
+  }
+  body.dark a {
+    color: #5ab4f8;
+  }
+  body.dark a:hover {
+    color: #cce7ff;
+  }
+
+  /* Navbar */
+  nav {
+    background-color: #0077cc;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav a {
+    color: white;
+    margin: 0 12px;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  nav a:hover {
+    color: #cce7ff;
+  }
+  #darkModeToggle {
+    background: none;
+    border: 2px solid white;
+    border-radius: 20px;
+    color: white;
+    padding: 5px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  #darkModeToggle:hover {
+    background-color: white;
+    color: #0077cc;
+  }
+
+  /* Container */
+  .container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 60px;
+  }
+  section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    border-bottom: 3px solid #0077cc;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+
+  /* About */
+  #about p {
+    max-width: 700px;
+    margin: 12px auto;
+    font-size: 1.1rem;
+  }
+
+  /* Profile Image */
+  #about img {
+    display: block;
+    margin: 20px auto;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+
+  /* Hobbies List */
+  #about ul {
+    max-width: 400px;
+    margin: 20px auto;
+    padding-left: 20px;
+  }
+  #about ul li {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+
+  /* Gallery */
+  #gallery .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  #gallery img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  #gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  }
+
+  /* Projects */
+  #projects .project-list {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .project {
+    background: #e1f0ff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.4s;
+  }
+  body.dark #projects .project {
+    background: #1f2937;
+    box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+  }
+  .project img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .project h3 {
+    margin-top: 0;
+    color: #0077cc;
+  }
+  .project p {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  .project a {
+    font-weight: 600;
+    color: #005fa3;
+  }
+  .project a:hover {
+    color: #003f66;
+  }
+
+  /* Blog */
+  #blog .blog-posts {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .blog-post {
+    background: #fff3e0;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background-color 0.4s;
+  }
+  body.dark #blog .blog-post {
+    background: #2d3748;
+    box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+  }
+  .blog-post h3 {
+    margin-top: 0;
+    color: #0077cc;
+  }
+  .blog-post p {
+    font-size: 1rem;
+  }
+  .blog-post time {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #555;
+  }
+  body.dark .blog-post time {
+    color: #bbb;
+  }
+
+  /* Contact */
+  #contact form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  #contact input,
+  #contact textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+  }
+  #contact input:focus,
+  #contact textarea:focus {
+    border-color: #0077cc;
+    outline: none;
+  }
+  #contact button {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  #contact button:hover {
+    background-color: #005fa3;
+  }
+
+  /* Social Links */
+  .social-links {
+    text-align: center;
+    margin-top: 25px;
+  }
+  .social-links a {
+    margin: 0 10px;
+    font-weight: 600;
+    color: #0077cc;
+  }
+  .social-links a:hover {
+    color: #004a80;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+    background: #0077cc;
+    color: white;
+  }
+  body.dark footer {
+    background: #003f66;
+  }
+
+  /* Animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation-fill-mode: forwards;
+    animation-name: fadeInUp;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+  }
+  .fade-in.delay-1 {
+    animation-delay: 0.2s;
+  }
+  .fade-in.delay-2 {
+    animation-delay: 0.4s;
+  }
+  .fade-in.delay-3 {
+    animation-delay: 0.6s;
+  }
+  .fade-in.delay-4 {
+    animation-delay: 0.8s;
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
     nav {
-      background-color: #1f1f1f;
-      padding: 15px 0;
-      text-align: center;
-      margin-bottom: 40px;
-      border-radius: 8px;
-      box-shadow: 0 0 15px #000000aa;
-    }
-
-    nav a {
-      margin: 0 18px;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    nav a.active,
-    nav a:hover {
-      color: #63b3ed;
-      border-bottom: 2px solid #63b3ed;
-      padding-bottom: 4px;
-    }
-
-    h1, h2 {
-      margin-bottom: 20px;
-      font-weight: 700;
-      letter-spacing: 1.1px;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-top: 60px;
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto 20px auto;
-    }
-
-    /* Home Section */
-    #home img {
-      width: 180px;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #1e90ffaa;
-      margin: 30px auto 40px auto;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-    #home img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Projects Section */
-    #projects ul {
-      list-style: none;
-      max-width: 700px;
-      margin: 0 auto;
-      padding-left: 0;
-    }
-    #projects li {
-      background: #1f1f1f;
-      margin-bottom: 15px;
-      padding: 15px 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 12px #000000cc;
-      transition: background-color 0.3s ease;
-      cursor: default;
-    }
-    #projects li:hover {
-      background-color: #333;
-    }
-    #projects a {
-      color: #63b3ed;
-      font-weight: 600;
-    }
-
-    /* Gallery Section */
-    #gallery {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      margin-top: 15px;
-    }
-    .gallery-grid img {
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #1e90ff55;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .gallery-grid img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 25px #1e90ffaa;
-    }
-
-    /* Blog Section */
-    #blog article {
-      background: #1f1f1f;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 15px #000000cc;
-      margin-bottom: 30px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      transition: background-color 0.3s ease;
-    }
-    #blog article:hover {
-      background-color: #333;
-    }
-    #blog h3 {
-      margin-bottom: 10px;
-      color: #63b3ed;
-    }
-    #blog p {
-      font-size: 1rem;
-      color: #ccc;
-    }
-    #blog a.read-more {
-      display: inline-block;
-      margin-top: 12px;
-      color: #1e90ff;
-      font-weight: 600;
-      text-decoration: underline;
-      transition: color 0.3s ease;
-    }
-    #blog a.read-more:hover {
-      color: #63b3ed;
-    }
-
-    /* Contact Section */
-    #contact form {
-      max-width: 500px;
-      margin: 0 auto;
-      display: flex;
       flex-direction: column;
+      gap: 10px;
     }
-    #contact input, #contact textarea {
-      background-color: #222;
-      color: #eee;
-      border: 1px solid #555;
-      padding: 12px 15px;
-      margin-bottom: 15px;
-      font-size: 1rem;
-      border-radius: 6px;
-      transition: border-color 0.3s ease;
-    }
-    #contact input:focus, #contact textarea:focus {
-      outline: none;
-      border-color: #63b3ed;
-      background-color: #1a1a1a;
-    }
-    #contact button {
-      background-color: #1e90ff;
-      color: white;
-      border: none;
-      padding: 14px;
-      font-size: 1.1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    #contact button:hover {
-      background-color: #63b3ed;
-    }
+  }
+</style>
 
-    /* Footer */
-    footer {
-      margin-top: 60px;
-      padding-top: 20px;
-      border-top: 1px solid #333;
-      font-size: 0.9rem;
-      color: #777;
-      text-align: center;
-    }
-
-    /* Smooth fade-in animation for sections */
-    section {
-      opacity: 0;
-      animation: fadeInUp 0.8s ease forwards;
-      animation-delay: 0.2s;
-      margin-bottom: 60px;
-    }
-    section:nth-child(2) { animation-delay: 0.4s; }
-    section:nth-child(3) { animation-delay: 0.6s; }
-    section:nth-child(4) { animation-delay: 0.8s; }
-    section:nth-child(5) { animation-delay: 1s; }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
 </head>
 <body>
 
-  <nav>
-    <a href="#home" class="active">Home</a>
+<nav>
+  <div>
+    <a href="#about">About</a>
     <a href="#projects">Projects</a>
-    <a href="#gallery">Gallery</a>
     <a href="#blog">Blog</a>
+    <a href="#gallery">Gallery</a>
     <a href="#contact">Contact</a>
-  </nav>
+  </div>
+  <button id="darkModeToggle" aria-label="Toggle dark mode">Dark Mode</button>
+</nav>
 
-  <!-- Home Section -->
-  <section id="home">
-    <h1>Hello, I’m MUHAISE JOSEPH</h1>
-    <p>Welcome to MJ Share Mind — the space where creativity meets innovation.</p>
-    <img src="gallery1.jpg" alt="Muhaise Joseph photo" />
-  </section>
+<main class="container">
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
+  <section id="about" class="fade-in delay-1">
+    <h2>About Me</h2>
+    <img src="gallery1.jpg" alt="Muhaise Joseph" />
+    <p>
+      Hi! I'm Muhaise Joseph, a beginner web developer passionate about turning ideas into real projects.
+      I enjoy learning new things, exploring technology, and creating cool projects that help others.
+    </p>
+    <p>
+      As I often say, <em>“In life, we need each other in one way or another.”</em> This site is part of my learning journey.
+    </p>
+    <h3>My Hobbies</h3>
     <ul>
-      <li><strong>Personal Website</strong> — A responsive portfolio site built with HTML, CSS, and JavaScript.</li>
-      <li><strong>Fuel Management System</strong> — A web app to track fuel usage and meter readings.</li>
-      <li><strong>Blog Platform</strong> — Simple blog built to share thoughts and tutorials.</li>
+      <li>Football</li>
+      <li>Volleyball</li>
+      <li>Basketball</li>
+      <li>Coding</li>
     </ul>
   </section>
 
-  <!-- Gallery Section -->
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery-grid">
-      <img src="gallery1.jpg" alt="Gallery Image 1" />
-      <img src="gallery2.jpg" alt="Gallery Image 2" />
-      <img src="gallery3.jpg" alt="Gallery Image 3" />
-      <img src="gallery4.jpg" alt="Gallery Image 4" />
-      <img src="gallery5.jpg" alt="Gallery Image 5" />
+  <section id="projects" class="fade-in delay-2">
+    <h2>Projects</h2>
+    <div class="project-list">
+      <div class="project">
+        <h3>Personal Portfolio Website</h3>
+        <img src="project1.jpg" alt="Portfolio screenshot" />
+        <p>A clean, responsive website to showcase my skills and projects.</p>
+        <a href="https://yourusername.github.io" target="_blank" rel="noopener">View Project</a>
+      </div>
+      <div class="project">
+        <h3>Fuel Management System</h3>
+        <img src="project2.jpg" alt="Fuel system screenshot" />
+        <p>A simple system to record fuel meter readings, litres, and total amount.</p>
+        <a href="#" target="_blank" rel="noopener">Coming Soon</a>
+      </div>
     </div>
   </section>
 
-  <!-- Blog Section -->
-  <section id="blog">
-    <h2>Blog Posts</h2>
-    <article>
-      <h3>Learning Web Development</h3>
-      <p>Starting my journey with HTML and CSS to build simple, beautiful websites...</p>
-      <a href="#" class="read-more">Read more</a>
-    </article>
-    <article>
-      <h3>Why Dark Mode Matters</h3>
-      <p>Exploring the benefits of dark mode for eye strain and design aesthetics...</p>
-      <a href="#" class="read-more">Read more</a>
-    </article>
+  <section id="blog" class="fade-in delay-3">
+    <h2>Blog</h2>
+    <div class="blog-posts">
+      <article class="blog-post">
+        <h3>Learning Web Development: My Journey</h3>
+        <p>Starting as a beginner, I share my progress and tips on how to learn coding effectively.</p>
+        <time datetime="2025-06-15">June 15, 2025</time>
+      </article>
+      <article class="blog-post">
+        <h3>Why Every Developer Should Build Projects</h3>
+        <p>Projects teach you practical skills and problem-solving beyond theory.</p>
+        <time datetime="2025-06-10">June 10, 2025</time>
+      </article>
+    </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
+  <section id="gallery" class="fade-in delay-4">
+    <h2>Photo Gallery</h2>
+    <div class="grid">
+      <img src="gallery2.jpg" alt="Gallery Image 1" />
+      <img src="gallery4.jpg" alt="Gallery Image 2" />
+      <img src="gallery5.JPG" alt="Gallery Image 3" />
+    </div>
+  </section>
+
+  <section id="contact" class="fade-in delay-4">
     <h2>Contact Me</h2>
     <form action="https://formspree.io/f/xvgknjrp" method="POST">
-      <!-- Hidden redirect input -->
-      <input type="hidden" name="_redirect" value="thankyou.html" />
-
-      <input
-        type="text"
-        name="name"
-        placeholder="Your Name"
-        required
-        minlength="3"
-        title="Please enter at least 3 characters"
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Your Email"
-        required
-        title="Please enter a valid email address"
-      />
-      <textarea
-        name="message"
-        rows="5"
-        placeholder="Your Message"
-        required
-        minlength="10"
-        title="Message should be at least 10 characters"
-      ></textarea>
+      <input type="text" name="name" placeholder="Your Name" required minlength="3" title="Please enter at least 3 characters" />
+      <input type="email" name="email" placeholder="Your Email" required title="Please enter a valid email" />
+      <textarea name="message" placeholder="Your Message" rows="5" required minlength="10" title="Message should be at least 10 characters"></textarea>
       <button type="submit">Send Message</button>
     </form>
+    <div class="social-links">
+      <p>Connect with me:</p>
+      <a href="https://facebook.com/RexMuhaiseJosephBojo" target="_blank" rel="noopener">Facebook</a> |
+      <a href="https://instagram.com/SirChiefMJ" target="_blank" rel="noopener">Instagram</a>
+    </div>
   </section>
 
-  <footer>
-    &copy; 2025 Muhaise Joseph. All rights reserved.
-  </footer>
+</main>
+
+<footer>
+  &copy; 2025 Muhaise Joseph. All rights reserved.
+</footer>
+
+<script>
+  // Dark mode toggle logic
+  const toggleBtn = document.getElementById('darkModeToggle');
+  const body = document.body;
+
+  // Load saved preference
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('dark');
+    toggleBtn.textContent = 'Light Mode';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark');
+    if (body.classList.contains('dark')) {
+      localStorage.setItem('darkMode', 'enabled');
+      toggleBtn.textContent = 'Light Mode';
+    } else {
+      localStorage.setItem('darkMode', 'disabled');
+      toggleBtn.textContent = 'Dark Mode';
+    }
+  });
+
+  // Animation on scroll using Intersection Observer
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.style.animationPlayState = 'running';
+      appearOnScroll.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    fader.style.animationPlayState = 'paused';
+    appearOnScroll.observe(fader);
+  });
+</script>
 
 </body>
 </html>
