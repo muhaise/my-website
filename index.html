@@ -3,240 +3,674 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Muhaise Joseph | Personal Website</title>
-<meta name="description" content="Muhaise Joseph's personal portfolio with projects, blog, contact, and gallery." />
-<meta name="keywords" content="Muhaise Joseph, portfolio, web developer, blog, projects, Uganda" />
+<title>Muhaise Joseph | Guided by Faith, Grounded by Family</title>
+<meta name="description" content="Personal website of Muhaise Joseph - Guided by faith, grounded by family, and passionate about technology." />
+<meta name="keywords" content="Muhaise Joseph, portfolio, web developer, blog, projects, Uganda, faith, family" />
 <meta name="author" content="Muhaise Joseph" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="Muhaise Joseph | Personal Website" />
-<meta property="og:description" content="Portfolio of Muhaise Joseph" />
+<meta property="og:title" content="Muhaise Joseph | Guided by Faith, Grounded by Family" />
+<meta property="og:description" content="Personal website of Muhaise Joseph - Guided by faith, grounded by family, and passionate about technology." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="gallery1.jpg" />
 <meta property="og:url" content="https://yourusername.github.io/" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Muhaise Joseph | Personal Website" />
-<meta name="twitter:description" content="Portfolio of Muhaise Joseph" />
+<meta name="twitter:title" content="Muhaise Joseph | Guided by Faith, Grounded by Family" />
+<meta name="twitter:description" content="Personal website of Muhaise Joseph - Guided by faith, grounded by family, and passionate about technology." />
 <meta name="twitter:image" content="gallery1.jpg" />
 
 <style>
-  /* Reset and base */
+  /* CSS Variables for consistent theming */
+  :root {
+    --primary: #0077cc;
+    --primary-dark: #005fa3;
+    --primary-light: #5ab4f8;
+    --accent: #ff6b35;
+    --text: #222;
+    --text-light: #555;
+    --bg: #fafafa;
+    --bg-alt: #e1f0ff;
+    --bg-card: #ffffff;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    --shadow-hover: 0 8px 20px rgba(0,0,0,0.15);
+    --radius: 12px;
+    --transition: all 0.3s ease;
+  }
+
+  /* Dark mode variables */
+  body.dark {
+    --primary: #5ab4f8;
+    --primary-dark: #3a94d8;
+    --primary-light: #8acfff;
+    --text: #eee;
+    --text-light: #bbb;
+    --bg: #121212;
+    --bg-alt: #1f2937;
+    --bg-card: #2d3748;
+    --shadow: 0 4px 12px rgba(255,255,255,0.05);
+    --shadow-hover: 0 8px 20px rgba(255,255,255,0.1);
+  }
+
+  /* Reset and base styles */
   * {
     box-sizing: border-box;
-    transition: background-color 0.4s, color 0.4s;
-  }
-  body {
     margin: 0;
+    padding: 0;
+  }
+
+  body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fafafa;
-    color: #222;
+    background-color: var(--bg);
+    color: var(--text);
     line-height: 1.6;
+    transition: var(--transition);
   }
+
   a {
-    color: #0077cc;
+    color: var(--primary);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: var(--transition);
   }
+
   a:hover {
-    color: #004a80;
+    color: var(--primary-dark);
   }
 
-  /* Dark mode */
-  body.dark {
-    background-color: #121212;
-    color: #eee;
-  }
-  body.dark a {
-    color: #5ab4f8;
-  }
-  body.dark a:hover {
-    color: #cce7ff;
+  img {
+    max-width: 100%;
+    height: auto;
   }
 
-  /* Navbar */
+  /* Layout */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  section {
+    padding: 80px 0;
+  }
+
+  /* Navigation */
   nav {
-    background-color: #0077cc;
+    background-color: var(--primary);
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   }
+
+  .nav-links {
+    display: flex;
+    gap: 25px;
+  }
+
   nav a {
     color: white;
-    margin: 0 12px;
     font-weight: 600;
     font-size: 1rem;
+    position: relative;
   }
-  nav a:hover {
-    color: #cce7ff;
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s;
   }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
   #darkModeToggle {
     background: none;
     border: 2px solid white;
     border-radius: 20px;
     color: white;
-    padding: 5px 12px;
+    padding: 8px 16px;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: var(--transition);
   }
+
   #darkModeToggle:hover {
     background-color: white;
-    color: #0077cc;
+    color: var(--primary);
   }
 
-  /* Container */
-  .container {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 0 20px;
-  }
-
-  /* Sections */
-  section {
-    margin-bottom: 60px;
-  }
-  section h2 {
+  /* Hero Section */
+  #hero {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 2rem;
-    border-bottom: 3px solid #0077cc;
-    display: inline-block;
-    padding-bottom: 5px;
+    padding: 100px 0;
+    background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%);
+    position: relative;
+    overflow: hidden;
   }
 
-  /* About */
-  #about p {
-    max-width: 700px;
-    margin: 12px auto;
-    font-size: 1.1rem;
-  }
-  
-  /* Bold text styling */
-  .bold-heading {
-    font-weight: bold;
-    font-size: 1.3rem;
-    color: #0077cc;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #e0e0e0;
-  }
-  
-  body.dark .bold-heading {
-    color: #5ab4f8;
-    border-bottom: 2px solid #333;
-  }
-  
-  .signature {
-    font-weight: bold;
-    font-size: 1.2rem;
-    text-align: center;
-    margin-top: 25px;
-    margin-bottom: 15px;
-  }
-  
-  .scripture {
-    font-style: italic;
-    text-align: center;
-    padding: 15px;
-    background: #f0f8ff;
-    border-radius: 8px;
-    margin: 25px 0;
-    font-size: 1.1rem;
-    border-left: 4px solid #0077cc;
-  }
-  
-  body.dark .scripture {
-    background: #1a2a3a;
-    border-left: 4px solid #5ab4f8;
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%230077cc" opacity="0.03"><circle cx="50" cy="50" r="40"/></svg>') repeat;
+    z-index: 0;
   }
 
-  /* Profile Image */
-  #about img {
-    display: block;
-    margin: 20px auto;
-    width: 160px;
-    height: 160px;
+  #hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .profile-image {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin: 0 auto 30px;
+    border: 5px solid white;
+    box-shadow: var(--shadow);
   }
 
-  /* Hobbies List */
-  #about ul {
-    max-width: 400px;
-    margin: 20px auto;
-    padding-left: 20px;
-  }
-  #about ul li {
-    font-size: 1.05rem;
-    margin-bottom: 8px;
+  body.dark .profile-image {
+    border-color: var(--bg-alt);
   }
 
-  /* Gallery */
-  #gallery .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  #hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+  }
+
+  #hero .tagline {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--text-light);
+  }
+
+  .scripture {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(255,255,255,0.7);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--primary);
+  }
+
+  body.dark .scripture {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .cta-buttons {
+    display: flex;
     gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--primary);
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid var(--primary);
+  }
+
+  .btn:hover {
+    background: transparent;
+    color: var(--primary);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+  }
+
+  .btn-outline:hover {
+    background: var(--primary);
+    color: white;
+  }
+
+  /* Section Headers */
+  .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+  }
+
+  .section-header p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text-light);
+  }
+
+  /* About Section */
+  #about {
+    background: var(--bg);
+  }
+
+  .about-content {
     max-width: 900px;
     margin: 0 auto;
   }
-  
+
+  .about-section {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+  }
+
+  .about-section:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .about-section h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--bg-alt);
+    padding-bottom: 10px;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .value-card {
+    background: var(--bg-alt);
+    padding: 20px;
+    border-radius: var(--radius);
+    text-align: center;
+    transition: var(--transition);
+  }
+
+  .value-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .value-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+  }
+
+  .hobbies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .hobby {
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+  }
+
+  /* Projects Section */
+  #projects {
+    background: var(--bg-alt);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .project-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-content h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+  }
+
+  .project-content p {
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .tech-tag {
+    background: var(--bg-alt);
+    color: var(--primary);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  /* Blog Section */
+  #blog {
+    background: var(--bg);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .blog-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .blog-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .blog-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog-content h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .blog-content p {
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+
+  .blog-category {
+    background: var(--bg-alt);
+    color: var(--primary);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  /* Gallery Section */
+  #gallery {
+    background: var(--bg-alt);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
   .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: var(--transition);
     aspect-ratio: 1 / 1;
   }
-  
+
   .gallery-item:hover {
     transform: scale(1.03);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-hover);
   }
-  
-  #gallery img {
+
+  .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
   }
-  
+
   .gallery-item:hover img {
     transform: scale(1.05);
   }
-  
-  /* Zoom Controls */
+
   .zoom-controls {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin: 20px 0;
   }
-  
-  .zoom-btn {
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 15px;
+
+  /* Contact Section */
+  #contact {
+    background: var(--bg);
+  }
+
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-card {
+    background: var(--bg-card);
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+  }
+
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .contact-card h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+
+  .contact-form {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--bg-alt);
+    border-radius: var(--radius);
     font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    font-family: inherit;
+    transition: var(--transition);
+    background: var(--bg);
+    color: var(--text);
   }
-  
-  .zoom-btn:hover {
-    background-color: #005fa3;
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.2);
   }
-  
+
+  .social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: var(--bg-alt);
+    border-radius: var(--radius);
+    transition: var(--transition);
+  }
+
+  .social-link:hover {
+    background: var(--primary);
+    color: white;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 20px 0;
+  }
+
+  .footer-links a {
+    color: white;
+  }
+
+  .footer-links a:hover {
+    color: #cce7ff;
+  }
+
+  .copyright {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
   /* Lightbox Modal */
   .lightbox {
     display: none;
@@ -250,17 +684,17 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .lightbox.active {
     display: flex;
   }
-  
+
   .lightbox-content {
     max-width: 90%;
     max-height: 90%;
     position: relative;
   }
-  
+
   .lightbox-img {
     max-width: 100%;
     max-height: 100%;
@@ -268,7 +702,7 @@
     border-radius: 8px;
     transition: transform 0.3s ease;
   }
-  
+
   .lightbox-close {
     position: absolute;
     top: 20px;
@@ -279,7 +713,7 @@
     cursor: pointer;
     z-index: 1001;
   }
-  
+
   .lightbox-nav {
     position: absolute;
     top: 50%;
@@ -289,7 +723,7 @@
     transform: translateY(-50%);
     padding: 0 20px;
   }
-  
+
   .lightbox-prev, .lightbox-next {
     color: white;
     font-size: 40px;
@@ -302,7 +736,7 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .lightbox-counter {
     position: absolute;
     bottom: 20px;
@@ -310,139 +744,6 @@
     transform: translateX(-50%);
     color: white;
     font-size: 1.2rem;
-  }
-
-  /* Projects */
-  #projects .project-list {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .project {
-    background: #e1f0ff;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: background-color 0.4s;
-  }
-  body.dark #projects .project {
-    background: #1f2937;
-    box-shadow: 0 2px 8px rgba(255,255,255,0.1);
-  }
-  .project img {
-    max-width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  .project h3 {
-    margin-top: 0;
-    color: #0077cc;
-  }
-  .project p {
-    font-size: 1rem;
-    margin: 10px 0;
-  }
-  .project a {
-    font-weight: 600;
-    color: #005fa3;
-  }
-  .project a:hover {
-    color: #003f66;
-  }
-
-  /* Blog */
-  #blog .blog-posts {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .blog-post {
-    background: #fff3e0;
-    padding: 18px 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: background-color 0.4s;
-  }
-  body.dark #blog .blog-post {
-    background: #2d3748;
-    box-shadow: 0 2px 8px rgba(255,255,255,0.1);
-  }
-  .blog-post h3 {
-    margin-top: 0;
-    color: #0077cc;
-  }
-  .blog-post p {
-    font-size: 1rem;
-  }
-  .blog-post time {
-    display: block;
-    margin-top: 8px;
-    font-size: 0.85rem;
-    color: #555;
-  }
-  body.dark .blog-post time {
-    color: #bbb;
-  }
-
-  /* Contact */
-  #contact form {
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-  }
-  #contact input,
-  #contact textarea {
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    transition: border-color 0.3s;
-  }
-  #contact input:focus,
-  #contact textarea:focus {
-    border-color: #0077cc;
-    outline: none;
-  }
-  #contact button {
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1.1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  #contact button:hover {
-    background-color: #005fa3;
-  }
-
-  /* Social Links */
-  .social-links {
-    text-align: center;
-    margin-top: 25px;
-  }
-  .social-links a {
-    margin: 0 10px;
-    font-weight: 600;
-    color: #0077cc;
-  }
-  .social-links a:hover {
-    color: #004a80;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 15px 0;
-    font-size: 0.9rem;
-    background: #0077cc;
-    color: white;
-  }
-  body.dark footer {
-    background: #003f66;
   }
 
   /* Animations */
@@ -454,18 +755,23 @@
     animation-duration: 0.8s;
     animation-timing-function: ease-out;
   }
+
   .fade-in.delay-1 {
     animation-delay: 0.2s;
   }
+
   .fade-in.delay-2 {
     animation-delay: 0.4s;
   }
+
   .fade-in.delay-3 {
     animation-delay: 0.6s;
   }
+
   .fade-in.delay-4 {
     animation-delay: 0.8s;
   }
+
   @keyframes fadeInUp {
     to {
       opacity: 1;
@@ -473,44 +779,99 @@
     }
   }
 
-  /* Responsive */
-  @media (max-width: 600px) {
+  /* Responsive Design */
+  @media (max-width: 768px) {
     nav {
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
     }
-    
-    #gallery .grid {
+
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #hero h1 {
+      font-size: 2.2rem;
+    }
+
+    .hero-content .tagline {
+      font-size: 1.2rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-container {
+      grid-template-columns: 1fr;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+    }
+
+    .projects-grid,
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
-    
+
     .lightbox-nav {
       padding: 0 10px;
     }
-    
+
     .lightbox-prev, .lightbox-next {
       font-size: 30px;
       width: 40px;
       height: 40px;
     }
-    
+
     .lightbox-close {
       font-size: 30px;
       top: 10px;
       right: 15px;
     }
-    
-    .bold-heading {
-      font-size: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 15px;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    #hero {
+      padding: 80px 0;
+    }
+
+    .profile-image {
+      width: 150px;
+      height: 150px;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+      flex-direction: column;
+      gap: 15px;
     }
   }
 </style>
-
 </head>
 <body>
 
 <nav>
-  <div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
     <a href="#blog">Blog</a>
@@ -520,174 +881,321 @@
   <button id="darkModeToggle" aria-label="Toggle dark mode">Dark Mode</button>
 </nav>
 
-<main class="container">
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="fade-in">
+    <div class="container">
+      <div class="hero-content">
+        <img src="gallery1.jpg" alt="Muhaise Joseph" class="profile-image" />
+        <h1>Muhaise Joseph</h1>
+        <p class="tagline">Guided by Faith, Grounded by Family</p>
+        <p>Born on October 9th, 2025</p>
+        
+        <div class="scripture">
+          "Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight." - Proverbs 3:5-6
+        </div>
+        
+        <div class="cta-buttons">
+          <a href="#about" class="btn">My Story</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- About Section -->
   <section id="about" class="fade-in delay-1">
-    <h2>About Me</h2>
-    <img src="gallery1.jpg" alt="Muhaise Joseph" />
-    <p>
-      Hello 👋! I'm Muhaise Joseph. I was born on October 9th, 2025. My life is a testament to two unwavering forces: the love of my family and the grace of God. These are the twin pillars that hold up my world.
-    </p>
-    
-    <div class="bold-heading">My Foundation: Family</div>
-    <p>
-      Everything I am, and everything I will become, begins and ends with my family. They are my first teachers, my safest harbor, and my greatest cheerleaders.
-    </p>
-    <p>
-      Their loving arms were my first home.
-    </p>
-    <p>
-      Their encouraging voices will be the wind beneath my wings as I learn to fly.
-    </p>
-    <p>
-      Their wisdom is the compass I will use to navigate the world.
-    </p>
-    <p>
-      The values I cherish—kindness, respect, resilience, and love—are not just words I will learn; they are lessons I live every day through their example. Every step I take is made with the confidence of knowing I am deeply, unconditionally loved. My family is the mirror through which I will first understand my own worth and potential.
-    </p>
-    
-    <div class="bold-heading">My Compass: Faith</div>
-    <p>
-      Above all else, I put God first.
-    </p>
-    <p>
-      My journey is not my own; it is a path walked hand-in-hand with my Creator. I trust in God to direct my steps, guide my decisions, and protect my heart.
-    </p>
-    <p>
-      <strong>Direction:</strong> I look to His word as a "lamp to my feet and a light to my path." When the way forward is unclear, my faith provides the clarity I need.
-    </p>
-    <p>
-      <strong>Guidance:</strong> In every choice, big or small, I seek His wisdom over my own. I pray for a heart that aligns with His purpose for my life.
-    </p>
-    <p>
-      <strong>Protection:</strong> I find my safety not in the world, but in the shadow of His wings. My trust is in His promise to never leave me nor forsake me.
-    </p>
-    <p>
-      This faith is not a mere belief; it is the very core of my identity. It is the source of my hope, my peace, and my courage. It is the promise that I am never, ever alone.
-    </p>
-    
-    <div class="bold-heading">Our Shared Journey</div>
-    <p>
-      The world I am entering is one of great beauty and complexity. But I face it with a fearless heart, because I am grounded by the rock of my family and guided by the light of my Faith.
-    </p>
-    <p>
-      I am here to learn, to love, and to serve a purpose greater than myself. I am here to be a force for good, reflecting the love I receive from my family and the grace I am given by God.
-    </p>
-    <p>
-      Thank you for being a part of the community I will grow in. I am excited to see how our stories will intertwine.
-    </p>
-    
-    <div class="signature">In Faith and Gratitude,</div>
-    <div class="signature">Muhaise Joseph (MJ)</div>
-    
-    <div class="scripture">
-      "Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight." - Proverbs 3:5-6
+    <div class="container">
+      <div class="section-header">
+        <h2>About Me</h2>
+        <p>My journey is built on faith, family, and the pursuit of purpose</p>
+      </div>
+      
+      <div class="about-content">
+        <div class="about-section">
+          <h3>My Foundation: Family</h3>
+          <p>Everything I am, and everything I will become, begins and ends with my family. They are my first teachers, my safest harbor, and my greatest cheerleaders.</p>
+          <p>Their loving arms were my first home. Their encouraging voices will be the wind beneath my wings as I learn to fly. Their wisdom is the compass I will use to navigate the world.</p>
+          <p>The values I cherish—kindness, respect, resilience, and love—are not just words I will learn; they are lessons I live every day through their example. Every step I take is made with the confidence of knowing I am deeply, unconditionally loved. My family is the mirror through which I will first understand my own worth and potential.</p>
+        </div>
+        
+        <div class="about-section">
+          <h3>My Compass: Faith</h3>
+          <p>Above all else, I put God first. My journey is not my own; it is a path walked hand-in-hand with my Creator. I trust in God to direct my steps, guide my decisions, and protect my heart.</p>
+          
+          <div class="values-grid">
+            <div class="value-card">
+              <div class="value-icon">🧭</div>
+              <h4>Direction</h4>
+              <p>I look to His word as a "lamp to my feet and a light to my path." When the way forward is unclear, my faith provides the clarity I need.</p>
+            </div>
+            
+            <div class="value-card">
+              <div class="value-icon">📖</div>
+              <h4>Guidance</h4>
+              <p>In every choice, big or small, I seek His wisdom over my own. I pray for a heart that aligns with His purpose for my life.</p>
+            </div>
+            
+            <div class="value-card">
+              <div class="value-icon">🛡️</div>
+              <h4>Protection</h4>
+              <p>I find my safety not in the world, but in the shadow of His wings. My trust is in His promise to never leave me nor forsake me.</p>
+            </div>
+          </div>
+          
+          <p>This faith is not a mere belief; it is the very core of my identity. It is the source of my hope, my peace, and my courage. It is the promise that I am never, ever alone.</p>
+        </div>
+        
+        <div class="about-section">
+          <h3>Our Shared Journey</h3>
+          <p>The world I am entering is one of great beauty and complexity. But I face it with a fearless heart, because I am grounded by the rock of my family and guided by the light of my Faith.</p>
+          <p>I am here to learn, to love, and to serve a purpose greater than myself. I am here to be a force for good, reflecting the love I receive from my family and the grace I am given by God.</p>
+          <p>Thank you for being a part of the community I will grow in. I am excited to see how our stories will intertwine.</p>
+          
+          <div class="signature">
+            <p><strong>In Faith and Gratitude,</strong></p>
+            <p><strong>Muhaise Joseph (MJ)</strong></p>
+          </div>
+        </div>
+        
+        <div class="about-section">
+          <h3>My Interests & Hobbies</h3>
+          <div class="hobbies-container">
+            <span class="hobby">Football</span>
+            <span class="hobby">Volleyball</span>
+            <span class="hobby">Basketball</span>
+            <span class="hobby">Coding</span>
+            <span class="hobby">Learning</span>
+            <span class="hobby">Family Time</span>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <p>
-      As I often say, <em>“In life, we need each other in one way or another.”</em> This site is part of my learning journey.
-    </p>
-    
-    <h3>My Hobbies</h3>
-    <ul>
-      <li>Football</li>
-      <li>Volleyball</li>
-      <li>Basketball</li>
-      <li>Coding</li>
-    </ul>
   </section>
 
+  <!-- Projects Section -->
   <section id="projects" class="fade-in delay-2">
-    <h2>Projects</h2>
-    <div class="project-list">
-      <div class="project">
-        <h3>Personal Portfolio Website</h3>
-        <img src="project1.jpg" alt="Portfolio screenshot" />
-        <p>A clean, responsive website to showcase my skills and projects.</p>
-        <a href="https://yourusername.github.io" target="_blank" rel="noopener">View Project</a>
+    <div class="container">
+      <div class="section-header">
+        <h2>My Projects</h2>
+        <p>Building solutions with purpose and passion</p>
       </div>
-      <div class="project">
-        <h3>Fuel Management System</h3>
-        <img src="project2.jpg" alt="Fuel system screenshot" />
-        <p>A simple system to record fuel meter readings, litres, and total amount.</p>
-        <a href="#" target="_blank" rel="noopener">Coming Soon</a>
+      
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="project1.jpg" alt="Portfolio Website" class="project-image" />
+          <div class="project-content">
+            <h3>Personal Portfolio Website</h3>
+            <p>A clean, responsive website to showcase my skills and projects, built with HTML, CSS, and JavaScript.</p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <a href="https://yourusername.github.io" target="_blank" rel="noopener" class="btn">View Project</a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <img src="project2.jpg" alt="Fuel Management System" class="project-image" />
+          <div class="project-content">
+            <h3>Fuel Management System</h3>
+            <p>A simple system to record fuel meter readings, litres, and total amount with reporting capabilities.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Database</span>
+              <span class="tech-tag">UI/UX</span>
+            </div>
+            <a href="#" class="btn">Coming Soon</a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <img src="gallery1.jpg" alt="Family Photo Gallery" class="project-image" />
+          <div class="project-content">
+            <h3>Family Photo Gallery</h3>
+            <p>A digital archive of family memories and milestones, organized and easily accessible for generations.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Web Design</span>
+              <span class="tech-tag">Photo Management</span>
+            </div>
+            <a href="#gallery" class="btn">View Gallery</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Blog Section -->
   <section id="blog" class="fade-in delay-3">
-    <h2>Blog</h2>
-    <div class="blog-posts">
-      <article class="blog-post">
-        <h3>Learning Web Development: My Journey</h3>
-        <p>Starting as a beginner, I share my progress and tips on how to learn coding effectively.</p>
-        <time datetime="2025-06-15">June 15, 2025</time>
-      </article>
-      <article class="blog-post">
-        <h3>Why Every Developer Should Build Projects</h3>
-        <p>Projects teach you practical skills and problem-solving beyond theory.</p>
-        <time datetime="2025-06-10">June 10, 2025</time>
-      </article>
+    <div class="container">
+      <div class="section-header">
+        <h2>Blog & Reflections</h2>
+        <p>Sharing insights from my journey of faith, family, and learning</p>
+      </div>
+      
+      <div class="blog-grid">
+        <div class="blog-card">
+          <img src="blog-faith-tech.jpg" alt="Balancing Faith and Technology" class="blog-image" />
+          <div class="blog-content">
+            <h3>Balancing Faith in a Digital World</h3>
+            <p>How I maintain my spiritual foundation while navigating the rapidly changing world of technology and innovation.</p>
+            <div class="blog-meta">
+              <time datetime="2025-06-20">June 20, 2025</time>
+              <span class="blog-category">Faith & Technology</span>
+            </div>
+            <a href="#" class="btn">Read More</a>
+          </div>
+        </div>
+        
+        <div class="blog-card">
+          <img src="blog-family-values.jpg" alt="Family Values in Modern Times" class="blog-image" />
+          <div class="blog-content">
+            <h3>The Legacy of Family Values</h3>
+            <p>Exploring how traditional family values shape our identity and provide stability in an ever-changing world.</p>
+            <div class="blog-meta">
+              <time datetime="2025-06-15">June 15, 2025</time>
+              <span class="blog-category">Family & Values</span>
+            </div>
+            <a href="#" class="btn">Read More</a>
+          </div>
+        </div>
+        
+        <div class="blog-card">
+          <img src="blog-coding-journey.jpg" alt="My Coding Journey" class="blog-image" />
+          <div class="blog-content">
+            <h3>My Coding Journey: From Curiosity to Creation</h3>
+            <p>Sharing my path into web development, the challenges I've faced, and the joy of building things that matter.</p>
+            <div class="blog-meta">
+              <time datetime="2025-06-10">June 10, 2025</time>
+              <span class="blog-category">Technology</span>
+            </div>
+            <a href="#" class="btn">Read More</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- Gallery Section -->
   <section id="gallery" class="fade-in delay-4">
-    <h2>Photo Gallery</h2>
-    
-    <div class="zoom-controls">
-      <button class="zoom-btn" id="zoomIn">Zoom In</button>
-      <button class="zoom-btn" id="zoomOut">Zoom Out</button>
-      <button class="zoom-btn" id="resetZoom">Reset Zoom</button>
-    </div>
-    
-    <div class="grid">
-      <div class="gallery-item">
-        <img src="gallery2.jpg" alt="Gallery Image 1" data-index="0" />
+    <div class="container">
+      <div class="section-header">
+        <h2>Photo Gallery</h2>
+        <p>Moments that capture my journey and the people who matter most</p>
       </div>
-      <div class="gallery-item">
-        <img src="gallery4.jpg" alt="Gallery Image 2" data-index="1" />
+      
+      <div class="zoom-controls">
+        <button class="btn" id="zoomIn">Zoom In</button>
+        <button class="btn" id="zoomOut">Zoom Out</button>
+        <button class="btn" id="resetZoom">Reset Zoom</button>
       </div>
-      <div class="gallery-item">
-        <img src="gallery5.JPG" alt="Gallery Image 3" data-index="2" />
-      </div>
-      <div class="gallery-item">
-        <img src="gallery1.jpg" alt="Gallery Image 4" data-index="3" />
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="gallery2.jpg" alt="Family Moments" data-index="0" />
+        </div>
+        <div class="gallery-item">
+          <img src="gallery4.jpg" alt="Learning Journey" data-index="1" />
+        </div>
+        <div class="gallery-item">
+          <img src="gallery5.JPG" alt="Faith in Action" data-index="2" />
+        </div>
+        <div class="gallery-item">
+          <img src="gallery1.jpg" alt="Personal Growth" data-index="3" />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Lightbox Modal -->
-  <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" id="lightboxClose">&times;</span>
-    <div class="lightbox-nav">
-      <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
-      <span class="lightbox-next" id="lightboxNext">&#10095;</span>
-    </div>
-    <div class="lightbox-content">
-      <img class="lightbox-img" id="lightboxImg" src="" alt="" />
-    </div>
-    <div class="lightbox-counter" id="lightboxCounter"></div>
-  </div>
-
+  <!-- Contact Section -->
   <section id="contact" class="fade-in delay-4">
-    <h2>Contact Me</h2>
-    <form action="https://formspree.io/f/xvgknjrp" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required minlength="3" title="Please enter at least 3 characters" />
-      <input type="email" name="email" placeholder="Your Email" required title="Please enter a valid email" />
-      <textarea name="message" placeholder="Your Message" rows="5" required minlength="10" title="Message should be at least 10 characters"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <div class="social-links">
-      <p>Connect with me:</p>
-      <a href="https://facebook.com/RexMuhaiseJosephBojo" target="_blank" rel="noopener">Facebook</a> |
-      <a href="https://instagram.com/SirChiefMJ" target="_blank" rel="noopener">Instagram</a>
+    <div class="container">
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+        <p>I'd love to hear from you and connect</p>
+      </div>
+      
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-card">
+            <h3>My Philosophy</h3>
+            <p>As I often say, <em>"In life, we need each other in one way or another."</em> I believe in the power of connection and community.</p>
+            <p>Whether you want to discuss technology, faith, family, or just say hello, I'd be delighted to hear from you.</p>
+          </div>
+          
+          <div class="contact-card">
+            <h3>Connect With Me</h3>
+            <div class="social-links">
+              <a href="https://facebook.com/RexMuhaiseJosephBojo" target="_blank" rel="noopener" class="social-link">
+                <span>Facebook</span>
+              </a>
+              <a href="https://instagram.com/SirChiefMJ" target="_blank" rel="noopener" class="social-link">
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <h3>Send Me a Message</h3>
+          <form action="https://formspree.io/f/xvgknjrp" method="POST">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required minlength="3" title="Please enter at least 3 characters" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required title="Please enter a valid email" />
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" placeholder="Enter your message" rows="5" required minlength="10" title="Message should be at least 10 characters"></textarea>
+            </div>
+            
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
-
 </main>
 
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <div class="lightbox-nav">
+    <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+    <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+  </div>
+  <div class="lightbox-content">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+  </div>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
 <footer>
-  &copy; 2025 Muhaise Joseph. All rights reserved.
+  <div class="container">
+    <div class="footer-content">
+      <h3>Muhaise Joseph</h3>
+      <p>Guided by Faith, Grounded by Family</p>
+      
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2025 Muhaise Joseph. All rights reserved.
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script>
@@ -862,6 +1370,23 @@
         resetZoom();
         break;
     }
+  });
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
 </script>
 
