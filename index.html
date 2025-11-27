@@ -116,6 +116,46 @@
     margin: 12px auto;
     font-size: 1.1rem;
   }
+  
+  /* Bold text styling */
+  .bold-heading {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #0077cc;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e0e0;
+  }
+  
+  body.dark .bold-heading {
+    color: #5ab4f8;
+    border-bottom: 2px solid #333;
+  }
+  
+  .signature {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+  
+  .scripture {
+    font-style: italic;
+    text-align: center;
+    padding: 15px;
+    background: #f0f8ff;
+    border-radius: 8px;
+    margin: 25px 0;
+    font-size: 1.1rem;
+    border-left: 4px solid #0077cc;
+  }
+  
+  body.dark .scripture {
+    background: #1a2a3a;
+    border-left: 4px solid #5ab4f8;
+  }
 
   /* Profile Image */
   #about img {
@@ -142,21 +182,134 @@
   /* Gallery */
   #gallery .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
     max-width: 900px;
     margin: 0 auto;
   }
+  
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  }
+  
   #gallery img {
     width: 100%;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
   }
-  #gallery img:hover {
+  
+  .gallery-item:hover img {
     transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  }
+  
+  /* Zoom Controls */
+  .zoom-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .zoom-btn {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .zoom-btn:hover {
+    background-color: #005fa3;
+  }
+  
+  /* Lightbox Modal */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .lightbox.active {
+    display: flex;
+  }
+  
+  .lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+  }
+  
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+  
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 20px;
+  }
+  
+  .lightbox-prev, .lightbox-next {
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .lightbox-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.2rem;
   }
 
   /* Projects */
@@ -326,6 +479,30 @@
       flex-direction: column;
       gap: 10px;
     }
+    
+    #gallery .grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .lightbox-nav {
+      padding: 0 10px;
+    }
+    
+    .lightbox-prev, .lightbox-next {
+      font-size: 30px;
+      width: 40px;
+      height: 40px;
+    }
+    
+    .lightbox-close {
+      font-size: 30px;
+      top: 10px;
+      right: 15px;
+    }
+    
+    .bold-heading {
+      font-size: 1.2rem;
+    }
   }
 </style>
 
@@ -350,47 +527,67 @@
     <img src="gallery1.jpg" alt="Muhaise Joseph" />
     <p>
       Hello 👋! I'm Muhaise Joseph. I was born on October 9th, 2025. My life is a testament to two unwavering forces: the love of my family and the grace of God. These are the twin pillars that hold up my world.
-
-<p>My Foundation: Family</p>
-Everything I am, and everything I will become, begins and ends with my family. They are my first teachers, my safest harbor, and my greatest cheerleaders.
-
-Their loving arms were my first home.
-
-Their encouraging voices will be the wind beneath my wings as I learn to fly.
-
-Their wisdom is the compass I will use to navigate the world.
-
-The values I cherish—kindness, respect, resilience, and love—are not just words I will learn; they are lessons I live every day through their example. Every step I take is made with the confidence of knowing I am deeply, unconditionally loved. My family is the mirror through which I will first understand my own worth and potential.
-
-<p>My Compass: Faith</p>
-Above all else, I put God first.
-
-My journey is not my own; it is a path walked hand-in-hand with my Creator. I trust in God to direct my steps, guide my decisions, and protect my heart.
-
-Direction: I look to His word as a "lamp to my feet and a light to my path." When the way forward is unclear, my faith provides the clarity I need.
-
-Guidance: In every choice, big or small, I seek His wisdom over my own. I pray for a heart that aligns with His purpose for my life.
-
-Protection: I find my safety not in the world, but in the shadow of His wings. My trust is in His promise to never leave me nor forsake me.
-
-This faith is not a mere belief; it is the very core of my identity. It is the source of my hope, my peace, and my courage. It is the promise that I am never, ever alone.
-
-<p>Our Shared Journey</p>
-The world I am entering is one of great beauty and complexity. But I face it with a fearless heart, because I am grounded by the rock of my family and guided by the light of my Faith.
-
-I am here to learn, to love, and to serve a purpose greater than myself. I am here to be a force for good, reflecting the love I receive from my family and the grace I am given by God.
-
-Thank you for being a part of the community I will grow in. I am excited to see how our stories will intertwine.
-
-<p>In Faith and Gratitude,</p>
-
-Muhaise Joseph (MJ)
-
     </p>
-"Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight." - Proverbs 3:5-6
+    
+    <div class="bold-heading">My Foundation: Family</div>
+    <p>
+      Everything I am, and everything I will become, begins and ends with my family. They are my first teachers, my safest harbor, and my greatest cheerleaders.
+    </p>
+    <p>
+      Their loving arms were my first home.
+    </p>
+    <p>
+      Their encouraging voices will be the wind beneath my wings as I learn to fly.
+    </p>
+    <p>
+      Their wisdom is the compass I will use to navigate the world.
+    </p>
+    <p>
+      The values I cherish—kindness, respect, resilience, and love—are not just words I will learn; they are lessons I live every day through their example. Every step I take is made with the confidence of knowing I am deeply, unconditionally loved. My family is the mirror through which I will first understand my own worth and potential.
+    </p>
+    
+    <div class="bold-heading">My Compass: Faith</div>
+    <p>
+      Above all else, I put God first.
+    </p>
+    <p>
+      My journey is not my own; it is a path walked hand-in-hand with my Creator. I trust in God to direct my steps, guide my decisions, and protect my heart.
+    </p>
+    <p>
+      <strong>Direction:</strong> I look to His word as a "lamp to my feet and a light to my path." When the way forward is unclear, my faith provides the clarity I need.
+    </p>
+    <p>
+      <strong>Guidance:</strong> In every choice, big or small, I seek His wisdom over my own. I pray for a heart that aligns with His purpose for my life.
+    </p>
+    <p>
+      <strong>Protection:</strong> I find my safety not in the world, but in the shadow of His wings. My trust is in His promise to never leave me nor forsake me.
+    </p>
+    <p>
+      This faith is not a mere belief; it is the very core of my identity. It is the source of my hope, my peace, and my courage. It is the promise that I am never, ever alone.
+    </p>
+    
+    <div class="bold-heading">Our Shared Journey</div>
+    <p>
+      The world I am entering is one of great beauty and complexity. But I face it with a fearless heart, because I am grounded by the rock of my family and guided by the light of my Faith.
+    </p>
+    <p>
+      I am here to learn, to love, and to serve a purpose greater than myself. I am here to be a force for good, reflecting the love I receive from my family and the grace I am given by God.
+    </p>
+    <p>
+      Thank you for being a part of the community I will grow in. I am excited to see how our stories will intertwine.
+    </p>
+    
+    <div class="signature">In Faith and Gratitude,</div>
+    <div class="signature">Muhaise Joseph (MJ)</div>
+    
+    <div class="scripture">
+      "Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight." - Proverbs 3:5-6
+    </div>
+    
     <p>
       As I often say, <em>“In life, we need each other in one way or another.”</em> This site is part of my learning journey.
     </p>
+    
     <h3>My Hobbies</h3>
     <ul>
       <li>Football</li>
@@ -436,12 +633,41 @@ Muhaise Joseph (MJ)
 
   <section id="gallery" class="fade-in delay-4">
     <h2>Photo Gallery</h2>
+    
+    <div class="zoom-controls">
+      <button class="zoom-btn" id="zoomIn">Zoom In</button>
+      <button class="zoom-btn" id="zoomOut">Zoom Out</button>
+      <button class="zoom-btn" id="resetZoom">Reset Zoom</button>
+    </div>
+    
     <div class="grid">
-      <img src="gallery2.jpg" alt="Gallery Image 1" />
-      <img src="gallery4.jpg" alt="Gallery Image 2" />
-      <img src="gallery5.JPG" alt="Gallery Image 3" />
+      <div class="gallery-item">
+        <img src="gallery2.jpg" alt="Gallery Image 1" data-index="0" />
+      </div>
+      <div class="gallery-item">
+        <img src="gallery4.jpg" alt="Gallery Image 2" data-index="1" />
+      </div>
+      <div class="gallery-item">
+        <img src="gallery5.JPG" alt="Gallery Image 3" data-index="2" />
+      </div>
+      <div class="gallery-item">
+        <img src="gallery1.jpg" alt="Gallery Image 4" data-index="3" />
+      </div>
     </div>
   </section>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <div class="lightbox-nav">
+      <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+      <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+    </div>
+    <div class="lightbox-content">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
 
   <section id="contact" class="fade-in delay-4">
     <h2>Contact Me</h2>
@@ -506,13 +732,138 @@ Muhaise Joseph (MJ)
     fader.style.animationPlayState = 'paused';
     appearOnScroll.observe(fader);
   });
+
+  // Gallery Zoom and Lightbox Functionality
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const zoomInBtn = document.getElementById('zoomIn');
+  const zoomOutBtn = document.getElementById('zoomOut');
+  const resetZoomBtn = document.getElementById('resetZoom');
+
+  let currentImageIndex = 0;
+  let images = [];
+  let zoomLevel = 1;
+
+  // Collect all gallery images
+  galleryItems.forEach(item => {
+    const img = item.querySelector('img');
+    images.push({
+      src: img.src,
+      alt: img.alt
+    });
+  });
+
+  // Open lightbox when clicking on a gallery image
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const index = parseInt(item.querySelector('img').getAttribute('data-index'));
+      openLightbox(index);
+    });
+  });
+
+  // Open lightbox with specific image
+  function openLightbox(index) {
+    currentImageIndex = index;
+    updateLightboxImage();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+  }
+
+  // Close lightbox
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+    resetZoom();
+  }
+
+  // Update lightbox image and counter
+  function updateLightboxImage() {
+    lightboxImg.src = images[currentImageIndex].src;
+    lightboxImg.alt = images[currentImageIndex].alt;
+    lightboxCounter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+    resetZoom();
+  }
+
+  // Navigate to previous image
+  function prevImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    updateLightboxImage();
+  }
+
+  // Navigate to next image
+  function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    updateLightboxImage();
+  }
+
+  // Zoom in function
+  function zoomIn() {
+    if (zoomLevel < 3) {
+      zoomLevel += 0.2;
+      lightboxImg.style.transform = `scale(${zoomLevel})`;
+    }
+  }
+
+  // Zoom out function
+  function zoomOut() {
+    if (zoomLevel > 0.5) {
+      zoomLevel -= 0.2;
+      lightboxImg.style.transform = `scale(${zoomLevel})`;
+    }
+  }
+
+  // Reset zoom function
+  function resetZoom() {
+    zoomLevel = 1;
+    lightboxImg.style.transform = `scale(${zoomLevel})`;
+  }
+
+  // Event listeners for lightbox controls
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', prevImage);
+  lightboxNext.addEventListener('click', nextImage);
+  zoomInBtn.addEventListener('click', zoomIn);
+  zoomOutBtn.addEventListener('click', zoomOut);
+  resetZoomBtn.addEventListener('click', resetZoom);
+
+  // Close lightbox when clicking outside the image
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    
+    switch(e.key) {
+      case 'Escape':
+        closeLightbox();
+        break;
+      case 'ArrowLeft':
+        prevImage();
+        break;
+      case 'ArrowRight':
+        nextImage();
+        break;
+      case '+':
+        zoomIn();
+        break;
+      case '-':
+        zoomOut();
+        break;
+      case '0':
+        resetZoom();
+        break;
+    }
+  });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
